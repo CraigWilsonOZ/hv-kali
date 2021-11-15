@@ -14,7 +14,8 @@ echo -e "\n"
 sleep 6
 
 if ! grep -q 'auto eth0' /etc/network/interfaces ; then
-  sudo cat > /etc/network/interfaces <<EOF
+  sudo cat >> /etc/network/interfaces <<EOF
+
 auto eth0
 iface eth0 inet dhcp
 EOF
