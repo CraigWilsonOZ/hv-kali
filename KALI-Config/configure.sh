@@ -70,7 +70,7 @@ rm -f packages.microsoft.gpg
 
 sudo apt install apt-transport-https
 sudo apt update
-sudo apt install code # or code-insiders
+sudo apt install code -y # or code-insiders
 
 echo "[+] Installing Microsoft Edge"
 ## Setup
@@ -81,11 +81,11 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge sta
 sudo rm microsoft.gpg
 ## Install
 sudo apt update
-sudo apt install microsoft-edge-beta
+sudo apt install microsoft-edge-beta -y
 
 echo "[+] Installing Azure Linux Agent"
 ## Setup
-sudo apt install walinuxagent
+sudo apt install waagent -y
 
 sudo cat > /etc/waagent.conf <<EOF
 #
@@ -127,20 +127,25 @@ echo "[+] Installing Azure CLI"
 ## Setup
 cd 
 sudo apt-get update
-sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
 
 curl -sL https://packages.microsoft.com/keys/microsoft.asc |
     gpg --dearmor |
     sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 
-AZ_REPO=$(lsb_release -cs)
+#AZ_REPO=$(lsb_release -cs)
+AZ_REPO=focal
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 
 sudo apt-get update
-sudo apt-get install azure-cli
+sudo apt-get install azure-cli -y
 
 echo "[+] Final Update"
 ## Setup
 sudo apt update
 sudo apt upgrade -y
+
+echo "[+] Next Steps"
+## Setup
+echo "Main setup completed, next run kali-tweaks and enable virtualization"
