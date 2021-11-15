@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eu -o pipefail # fail on error and report it, debug all lines
+#set -eu -o pipefail # fail on error and report it, debug all lines
 
 echo KALI update and configure base VM
 echo Checking for sudo access.
