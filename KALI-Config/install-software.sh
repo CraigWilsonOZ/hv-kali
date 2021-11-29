@@ -53,6 +53,22 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO 
 sudo apt-get update
 sudo apt-get install azure-cli -y
 
-echo "[+] Next Steps"
+echo "[+] Installing Microsoft Teams"
 ## Setup
-echo "Main setup completed, next run kali-tweaks and enable virtualization"
+wget -O ~/Downloads/MSteams.deb https://go.microsoft.com/fwlink/p/?LinkID=2112886
+sudo dpkg -i ~/Downloads/MSteams.deb
+
+echo "[+] Installing SNAPD"
+## Setup
+sudo apt update
+sudo apt install snapd
+sudo systemctl start snapd  
+sudo snap install core
+
+echo "[+] Installing Discord"
+## Setup
+sudo snap install discord
+sudo snap install postman
+
+# Linked SNAPD folder to applications for desktop icons
+sudo ln -s /var/lib/snapd/desktop/applications/ /usr/share/applications/snap 
